@@ -10,6 +10,7 @@ import java.util.List;
 public class RecupFichier {
 
 	
+	
 	public static List<String> recupData() throws IOException
 	{
 	
