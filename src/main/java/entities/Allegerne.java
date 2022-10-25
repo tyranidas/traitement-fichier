@@ -1,4 +1,6 @@
 package entities;
+
+
 /**
  * 
  * @author MyriamAgag
@@ -13,7 +15,7 @@ public class Allegerne {
 	 * Nom de l'allergène
 	 */
 	
-	String libelle;
+	private String libelle;
 
 	/**
 	 * 
