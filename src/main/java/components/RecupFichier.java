@@ -1,6 +1,5 @@
 package components;
 
-import entities.Ingredient;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -14,24 +13,25 @@ import java.util.HashMap;
 import java.util.List;
 import entities.Marque;
 import entities.Categorie;
+import entities.Ingredient;
 
 
 public class RecupFichier {
 	public static HashMap<String, Categorie> categories;
 	public static HashMap<String, Marque> marques;
-	private static HashMap<String, Ingredient> ingredient;
+	public static HashMap<String, Ingredient> ingredients;
 
 	private RecupFichier() {
 		super();
-		RecupFichier.ingredient = new HashMap<>();
 		RecupFichier.categories = new HashMap<>();
 		RecupFichier.marques = new HashMap<>();
+		RecupFichier.ingredients = new HashMap<>();
 	}
 
 	public static RecupFichier getInstance() throws IOException
 	{
 		RecupFichier recupFichier = new RecupFichier();
-		Path path = Paths.get(".\\src\\main\\data\\open-food-facts.csv");
+		Path path = Paths.get(".\\src\\main\\resources\\open-food-facts.csv");
 		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 		lines.remove(0);
 
@@ -62,7 +62,7 @@ public class RecupFichier {
 		for(String unIngredient : arrIngredient){
 
 			unIngredient = unIngredient.replace(".","").trim().toLowerCase();
-			Ingredient newIngredient = ingredient.get(lineIngredients);
+			Ingredient newIngredient = ingredient.get(unIngredient);
 
 			if(newIngredient == null) {
 				newIngredient = new Ingredient(unIngredient);
