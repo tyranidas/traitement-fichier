@@ -9,14 +9,12 @@ import java.util.List;
 
 public class RecupFichier {
 
-	public static void main(String[] args) throws IOException {
-	//public static List<String> recupData() throws IOException
-	//traitement-fichier\src\main\java\components\RecupFichier.java
-		//traitement-fichier\src\main\data\open-food-facts.csv
-		
-		Path path = Paths.get("./open-food-facts.csv");
+	
+	public static List<String> recupData() throws IOException
+	{
+	
+		Path path = Paths.get(".\\src\\main\\data\\open-food-facts.csv");
 		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-		System.out.println(lines.get(1));
-		//return lines;
+		return lines;
 	}
 }
