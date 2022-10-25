@@ -17,7 +17,7 @@ public class ApplicationOpenFoodFacts {
 			System.out.println("3 - Rechercher les meilleurs produits par Marque et par Catégorie");
 			System.out.println("4 - Afficher les allergènes les plus courants");
 			System.out.println("5 - Afficher les additifs les plus courants");
-			System.out.println("9 - Sortir");
+			System.out.println("6 - Sortir");
 			String userChoice = scanner.nextLine();
 		
 			switch (userChoice) {
