@@ -1,9 +1,9 @@
 package components;
 
 public class Marque {
-	String nom;
+	private String nom;
 
-	private Marque(String nom) {
+	public Marque(String nom) {
 	
 		this.nom = nom;
 	}
