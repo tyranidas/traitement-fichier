@@ -15,6 +15,7 @@ public class RecupFichier {
 		
 		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 		return lines;
+		//test
 		
 	}
 		
