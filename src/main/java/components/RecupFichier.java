@@ -5,17 +5,35 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 
-public class RecupFichier {
+import entities.Marque;
 
+public class RecupFichier {
+	public static HashMap<String, Marque> marques;
 	
-	public static List<String> recupData() throws IOException
+	private RecupFichier() {
+		super();
+		RecupFichier.marques = new HashMap<>();
+	}
+	
+	public static RecupFichier getInstance() throws IOException
 	{
-	
-		Path path = Paths.get(".\\src\\main\\data\\open-food-facts.csv");
+		RecupFichier recupFichier = new RecupFichier();
+		Path path = Paths.get(".\\src\\main\\resources\\open-food-facts.csv");
 		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-		lines.remove(1);
-		return lines;
+		lines.remove(0);
+		
+		for (String line : lines) {
+			String[] tokens = line.replace("|", ";").split(";");
+			Marque marque = marques.get(tokens[1]);
+			if(marque == null) {
+				marque = new Marque(tokens[1]);
+				marques.put(tokens[1], marque);
+			}
+		}
+
+		return recupFichier;
 	}
 }

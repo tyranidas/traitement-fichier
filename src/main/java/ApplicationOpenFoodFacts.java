@@ -1,13 +1,20 @@
+import java.io.IOException;
 import java.util.Scanner;
+
+import components.RecupFichier;
 
 public class ApplicationOpenFoodFacts {
 
-	/** Point d'entrée de l'application */
-	public static void main(String[] args) {
+	/** 
+	 * Point d'entrée de l'application 
+	 * @throws IOException 
+	 * */
+	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("******** MENU RECENSEMENT ********");
 		
 		boolean running = true;
+		RecupFichier recupFichier = RecupFichier.getInstance();
 		
 		while (running) {
 			System.out.println("	-----------------	");
