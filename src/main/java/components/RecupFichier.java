@@ -25,11 +25,10 @@ public class RecupFichier {
 		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 		lines.remove(1);
 
-
-		//for (String line : lines){
-		for(int i = 1; i< 10; i++){
-			String[]  arrLine = lines.get(i).replace("|", ";").split(";");
+		for (String line : lines){
+			String[]  arrLine = line.replace("|", ";").split(";");
 			getIngredients(arrLine[4]);
+			i++;
 		}
 
 		return lines;
@@ -37,10 +36,16 @@ public class RecupFichier {
 
 	public static void getIngredients(String lineIngredients){
 
-		String[]  arrIngredient = lineIngredients.split(",");
+		String[]  arrIngredient = lineIngredients.replace("_","").split("[,\\-]");
 
 		for(String unIngredient : arrIngredient){
+			unIngredient = unIngredient.replace(".","").trim().replace(" ,",",");
+
 			lstIngredient.add(new Ingredient(unIngredient));
+
+			//System.out.print(unIngredient+",");
+
 		}
+		//System.out.println("");
 	}
 }
