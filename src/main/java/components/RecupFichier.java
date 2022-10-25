@@ -10,11 +10,9 @@ import java.util.List;
 public class RecupFichier {
 
 	public static List<String>  recupFichier() throws IOException{
-		// TODO Auto-generated method stub
-		///traitement-fichier/src/main/java/components/RecupFichier.java
-		//:\Users\tyran\Documents\workspace-spring-tool-suite-4-4.16.0.RELEASE\traitement-fichier\src\main\resources\open-food-facts.csv
+		
 		Path path = Paths.get("./open-food-facts.csv");
-		boolean exists = Files.exists(path);
+		
 		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 		return lines;
 		
