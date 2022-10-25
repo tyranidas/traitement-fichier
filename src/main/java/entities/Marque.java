@@ -1,4 +1,4 @@
-package components;
+package entities;
 
 public class Marque {
 	private String nom;
