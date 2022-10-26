@@ -122,8 +122,8 @@ public class RecupFichier {
 			if (newIngredient == null) {
 				newIngredient = new Ingredient(strIngredient);
 				ingredients.put(strIngredient, newIngredient);
-				lstIngredients.add(newIngredient);
 			}
+			lstIngredients.add(newIngredient);
 		}
 
 		return lstIngredients;
