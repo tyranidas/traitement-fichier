@@ -10,7 +10,7 @@ public class Produit {
     private Categorie categorie;
     private Marque marque;
     private String scoreNutritionnel;
-    private Map<String,String> lstAttributs;
+    private Map<String, String> lstAttributs;
     private List<Ingredient> lstIngredient;
     private List<Additif> lstAdditif;
     private List<Allergene> lstAllergene;
@@ -22,10 +22,10 @@ public class Produit {
      * @param categorie         the categorie
      * @param marque            the marque
      * @param scoreNutritionnel the score nutritionnel
-     * @param lstAttributs      the lst attributs
-     * @param lstIngredient     the lst ingredient
-     * @param lstAdditif        the lst additif
-     * @param lstAllergene      the lst allergene
+     * @param lstAttributs      the list attributs
+     * @param lstIngredient     the list ingredient
+     * @param lstAdditif        the list additif
+     * @param lstAllergene      the list allergene
      */
     public Produit(Categorie categorie, Marque marque, String scoreNutritionnel, Map<String, String> lstAttributs, List<Ingredient> lstIngredient, List<Additif> lstAdditif, List<Allergene> lstAllergene) {
         this.categorie = categorie;
