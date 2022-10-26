@@ -13,7 +13,7 @@ public class Produit {
     private Map<String,String> lstAttributs;
     private List<Ingredient> lstIngredient;
     private List<Additif> lstAdditif;
-    private List<Allergene> lstAllegerne;
+    private List<Allergene> lstAllergene;
 
 
     /**
@@ -34,7 +34,7 @@ public class Produit {
         this.lstAttributs = lstAttributs;
         this.lstIngredient = lstIngredient;
         this.lstAdditif = lstAdditif;
-        this.lstAllegerne = lstAllergene;
+        this.lstAllergene = lstAllergene;
     }
 
     /**
@@ -150,8 +150,8 @@ public class Produit {
      *
      * @return the lst allegerne
      */
-    public List<Allergene> getLstAllegerne() {
-        return lstAllegerne;
+    public List<Allergene> getLstAllergene() {
+        return lstAllergene;
     }
 
     /**
@@ -159,7 +159,7 @@ public class Produit {
      *
      * @param lstAllergene the lst allergene
      */
-    public void setLstAllegerne(List<Allergene> lstAllergene) {
-        this.lstAllegerne = lstAllergene;
+    public void setLstAllergene(List<Allergene> lstAllergene) {
+        this.lstAllergene = lstAllergene;
     }
 }
