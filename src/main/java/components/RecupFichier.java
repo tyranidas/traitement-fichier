@@ -8,17 +8,33 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import entities.Marque;
-import entities.Categorie;
-import entities.Ingredient;
-import entities.Allergene;
+import java.util.Map;
 
+import entities.*;
+
+/**
+ * The type Recup fichier.
+ */
 public class RecupFichier {
 
+	/**
+	 * The Categories.
+	 */
 	public static HashMap<String, Categorie> categories;
+	/**
+	 * The Marques.
+	 */
 	public static HashMap<String, Marque> marques;
+	/**
+	 * The Ingredients.
+	 */
 	public static HashMap<String, Ingredient> ingredients;
+	/**
+	 * The Allergenes.
+	 */
 	public static HashMap<String, Allergene> allergenes;
+
+	public static List<Produit>  stock;
 
 	private RecupFichier() {
 		super();
@@ -26,8 +42,15 @@ public class RecupFichier {
 		RecupFichier.marques = new HashMap<>();
 		RecupFichier.ingredients = new HashMap<>();
 		RecupFichier.allergenes = new HashMap<>();
+		RecupFichier.stock = new ArrayList<>();
 	}
 
+	/**
+	 * Gets instance.
+	 *
+	 * @return the instance
+	 * @throws IOException the io exception
+	 */
 	public static RecupFichier getInstance() throws IOException {
 		RecupFichier recupFichier = new RecupFichier();
 		Path path = Paths.get(".\\src\\main\\resources\\open-food-facts.csv");
@@ -53,11 +76,19 @@ public class RecupFichier {
 				marques.put(tokens[1], marque);
 			}
 
-			ArrayList<Allergene> lstAllergenes = RecupFichier.initAllergenes(tokens[28]);
+			List<Allergene> lstAllergenes = RecupFichier.initAllergenes(tokens[28]);
+			List<Ingredient> lstIngredients = RecupFichier.initIngredients(tokens[4]);
 
-			ArrayList<Ingredient> lstIngredients = RecupFichier.initIngredients(tokens[4]);
+			// Provisoire le temps d'implémenter additif et attribut à supprimer par la suite
+			List<Additif> lstAdditifs = null;
+			Map<String, String> lstAttribut = null;
+
+			// Instantiation de Produits
+			Produit produit = new Produit(categorie, marque, tokens[3], lstAttribut, lstIngredients,lstAdditifs, lstAllergenes);
+			stock.add(produit);
 
 		}
+
 		return recupFichier;
 	}
 
@@ -90,10 +121,11 @@ public class RecupFichier {
 			if (newIngredient == null) {
 				newIngredient = new Ingredient(strIngredient);
 				ingredients.put(strIngredient, newIngredient);
+				lstIngredients.add(newIngredient);
 			}
-			lstIngredients.add(newIngredient);
 		}
 
 		return lstIngredients;
 	}
+
 }
