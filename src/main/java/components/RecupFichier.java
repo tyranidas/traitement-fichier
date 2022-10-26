@@ -86,6 +86,7 @@ public class RecupFichier {
 			// Instantiation de Produits
 			Produit produit = new Produit(categorie, marque, tokens[3], lstAttribut, lstIngredients,lstAdditifs, lstAllergenes);
 			stock.add(produit);
+			Stock leStock = new Stock(stock);
 
 		}
 
