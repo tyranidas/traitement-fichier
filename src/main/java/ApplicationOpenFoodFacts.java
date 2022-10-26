@@ -2,6 +2,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import components.RecupFichier;
+import services.MenuService;
+
+import javax.swing.*;
 
 public class ApplicationOpenFoodFacts {
 
@@ -26,13 +29,18 @@ public class ApplicationOpenFoodFacts {
 			System.out.println("5 - Afficher les additifs les plus courants");
 			System.out.println("6 - Sortir");
 			String userChoice = scanner.nextLine();
-		
+
+			String nom = "";
+
 			switch (userChoice) {
 			case "1":
-				
+				nom = MenuService.afficherMessage("Marque");
+				System.out.println("test::" + nom);
+				MenuService.afficherProduitParMarque(nom);
 				break;
+
 			case "2":
-				
+				nom = MenuService.afficherMessage("Catégorie");
 				break;
 			case "3":
 				
