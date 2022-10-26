@@ -14,6 +14,7 @@ import entities.Ingredient;
 import entities.Allergene;
 
 public class RecupFichier {
+
 	public static HashMap<String, Categorie> categories;
 	public static HashMap<String, Marque> marques;
 	public static HashMap<String, Ingredient> ingredients;
@@ -54,7 +55,7 @@ public class RecupFichier {
 
 			ArrayList<Allergene> lstAllergenes = RecupFichier.initAllergenes(tokens[28]);
 
-			getIngredients(tokens[4]);
+			ArrayList<Ingredient> lstIngredients = RecupFichier.initIngredients(tokens[4]);
 
 		}
 		return recupFichier;
@@ -77,19 +78,22 @@ public class RecupFichier {
 		return lstAllergenes;
 	}
 
-	public static void getIngredients(String lineIngredients) {
+	private static ArrayList<Ingredient> initIngredients(String lineIngredients) {
 		String[] arrIngredient = lineIngredients.replace("_", "").trim().split("[,\\-]");
+		ArrayList<Ingredient> lstIngredients = new ArrayList<>();
 
-		for (String unIngredient : arrIngredient) {
+		for (String strIngredient : arrIngredient) {
 
-			unIngredient = unIngredient.replace(".", "").trim().toLowerCase();
-			Ingredient newIngredient = ingredients.get(unIngredient);
+			strIngredient = strIngredient.replace(".", "").trim().toLowerCase();
+			Ingredient newIngredient = ingredients.get(strIngredient);
 
 			if (newIngredient == null) {
-				newIngredient = new Ingredient(unIngredient);
-				ingredients.put(unIngredient, newIngredient);
+				newIngredient = new Ingredient(strIngredient);
+				ingredients.put(strIngredient, newIngredient);
 			}
-
+			lstIngredients.add(newIngredient);
 		}
+
+		return lstIngredients;
 	}
 }
