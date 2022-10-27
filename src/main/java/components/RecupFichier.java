@@ -141,14 +141,14 @@ public class RecupFichier {
 
 	private static ArrayList<Additif> initAdditifs(String lineAdditif) {
 		ArrayList<Additif> listAdditif = new ArrayList<>();
-		if (lineAdditif != null) {
+		/*if (lineAdditif != null) {
 			String[] splitAdditif = lineAdditif.replace("en:", "").split(",");
 
 			for (String s : splitAdditif) {
 				listAdditif.add(new Additif(s));
 			}
 
-		}
+		}*/
 		return listAdditif;
 
 	}
