@@ -6,7 +6,7 @@ import java.util.List;
  * The type Stock.
  */
 public class Stock {
-    private List<Produit> lstProduit;
+    private static List<Produit> lstProduit;
 
     /**
      * Instantiates a new Stock.

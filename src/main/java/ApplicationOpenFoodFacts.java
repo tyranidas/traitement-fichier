@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import components.RecupFichier;
+import services.MenuService;
+import services.AfficherMeilleurProduitParMarque;
 
 public class ApplicationOpenFoodFacts {
 
@@ -11,10 +13,10 @@ public class ApplicationOpenFoodFacts {
 	 * */
 	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("******** MENU RECENSEMENT ********");
+		System.out.println("******** MENU FOOD ********");
 		
 		boolean running = true;
-		RecupFichier recupFichier = RecupFichier.getInstance();
+		RecupFichier.getInstance();
 		
 		while (running) {
 			System.out.println("	-----------------	");
@@ -26,11 +28,14 @@ public class ApplicationOpenFoodFacts {
 			System.out.println("5 - Afficher les additifs les plus courants");
 			System.out.println("6 - Sortir");
 			String userChoice = scanner.nextLine();
-		
+
+
 			switch (userChoice) {
 			case "1":
-				
+				MenuService service1 = new AfficherMeilleurProduitParMarque();
+				service1.traiter(scanner);
 				break;
+
 			case "2":
 				
 				break;

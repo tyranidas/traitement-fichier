@@ -34,7 +34,8 @@ public class RecupFichier {
 	 */
 	public static HashMap<String, Allergene> allergenes;
 
-	public static List<Produit>  stock;
+	public static Stock leStock;
+
 
 	private RecupFichier() {
 		super();
@@ -42,7 +43,6 @@ public class RecupFichier {
 		RecupFichier.marques = new HashMap<>();
 		RecupFichier.ingredients = new HashMap<>();
 		RecupFichier.allergenes = new HashMap<>();
-		RecupFichier.stock = new ArrayList<>();
 	}
 
 	/**
@@ -53,6 +53,7 @@ public class RecupFichier {
 	 */
 	public static RecupFichier getInstance() throws IOException {
 		RecupFichier recupFichier = new RecupFichier();
+		List<Produit> stock = new ArrayList<>();
 		Path path = Paths.get(".\\src\\main\\resources\\open-food-facts.csv");
 		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 		lines.remove(0);
@@ -84,11 +85,13 @@ public class RecupFichier {
 			Map<String, String> lstAttribut = null;
 
 			// Instantiation de Produits
-			Produit produit = new Produit(categorie, marque, tokens[3], lstAttribut, lstIngredients,lstAdditifs, lstAllergenes);
+			Produit produit = new Produit(tokens[2], categorie, marque, tokens[3], lstAttribut, lstIngredients,lstAdditifs, lstAllergenes);
 			stock.add(produit);
-			Stock leStock = new Stock(stock);
 
 		}
+
+		// Instantiation du Stock
+		leStock = new Stock(stock);
 
 		return recupFichier;
 	}
