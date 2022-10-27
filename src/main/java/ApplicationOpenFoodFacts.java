@@ -3,21 +3,23 @@ import java.util.Scanner;
 
 import components.RecupFichier;
 import services.MenuService;
+import services.AfficherAllergenesLesPlusCourants;
 import services.AfficherMeilleurProduitParMarque;
 
 public class ApplicationOpenFoodFacts {
 
-	/** 
-	 * Point d'entrée de l'application 
-	 * @throws IOException 
-	 * */
+	/**
+	 * Point d'entrée de l'application
+	 * 
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("******** MENU FOOD ********");
-		
+
 		boolean running = true;
 		RecupFichier.getInstance();
-		
+
 		while (running) {
 			System.out.println("	-----------------	");
 			System.out.println("Choisissez une option :");
@@ -29,31 +31,30 @@ public class ApplicationOpenFoodFacts {
 			System.out.println("6 - Sortir");
 			String userChoice = scanner.nextLine();
 
-
 			switch (userChoice) {
 			case "1":
 				MenuService service1 = new AfficherMeilleurProduitParMarque();
 				service1.traiter(scanner);
 				break;
-
 			case "2":
-				
+
 				break;
 			case "3":
-				
+
 				break;
 			case "4":
-				
+				MenuService service4 = new AfficherAllergenesLesPlusCourants();
+				service4.traiter(scanner);
 				break;
 			case "5":
-				
+
 				break;
 			case "6":
 				running = false;
 				break;
 			}
 		}
-		
+
 		scanner.close();
 	}
 }
