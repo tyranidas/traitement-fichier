@@ -99,36 +99,41 @@ public class RecupFichier {
 	}
 
 	private static ArrayList<Allergene> initAllergenes(String lineAllergenes) {
-		lineAllergenes = lineAllergenes == null ? "" : lineAllergenes;
-		String[] allergenes = lineAllergenes.split(",");
 		ArrayList<Allergene> lstAllergenes = new ArrayList<>();
-		for (String newAllergene : allergenes) {
-			newAllergene = newAllergene.toLowerCase().replace("fr:", "").replace("en:", "").replace("*", "").trim();
-			Allergene allergene = RecupFichier.allergenes.get(newAllergene);
-			if (allergene == null) {
-				allergene = new Allergene(newAllergene);
-				RecupFichier.allergenes.put(newAllergene, allergene);
+		
+		if (lineAllergenes != null) {
+			lineAllergenes = lineAllergenes == null ? "" : lineAllergenes;
+			String[] allergenes = lineAllergenes.split(",");
+			for (String newAllergene : allergenes) {
+				newAllergene = newAllergene.toLowerCase().replace("fr:", "").replace("en:", "").replace("*", "").trim();
+				Allergene allergene = RecupFichier.allergenes.get(newAllergene);
+				if (allergene == null) {
+					allergene = new Allergene(newAllergene);
+					RecupFichier.allergenes.put(newAllergene, allergene);
+				}
+				lstAllergenes.add(allergene);
 			}
-			lstAllergenes.add(allergene);
 		}
 
 		return lstAllergenes;
 	}
 
 	private static ArrayList<Ingredient> initIngredients(String lineIngredients) {
-		String[] arrIngredient = lineIngredients.replace("_", "").trim().split("[,\\-]");
 		ArrayList<Ingredient> lstIngredients = new ArrayList<>();
-
-		for (String strIngredient : arrIngredient) {
-
-			strIngredient = strIngredient.replace(".", "").trim().toLowerCase();
-			Ingredient newIngredient = ingredients.get(strIngredient);
-
-			if (newIngredient == null) {
-				newIngredient = new Ingredient(strIngredient);
-				ingredients.put(strIngredient, newIngredient);
+		if (lineIngredients != null) {
+			String[] arrIngredient = lineIngredients.replace("_", "").trim().split("[,\\-]");
+	
+			for (String strIngredient : arrIngredient) {
+	
+				strIngredient = strIngredient.replace(".", "").trim().toLowerCase();
+				Ingredient newIngredient = ingredients.get(strIngredient);
+	
+				if (newIngredient == null) {
+					newIngredient = new Ingredient(strIngredient);
+					ingredients.put(strIngredient, newIngredient);
+				}
+				lstIngredients.add(newIngredient);
 			}
-			lstIngredients.add(newIngredient);
 		}
 
 		return lstIngredients;
@@ -142,10 +147,10 @@ public class RecupFichier {
 			for (String s : splitAdditif) {
 				listAdditif.add(new Additif(s));
 			}
-		
-		} 
-			return listAdditif;
-		
+
+		}
+		return listAdditif;
+
 	}
 
 }
