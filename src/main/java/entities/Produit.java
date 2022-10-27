@@ -7,6 +7,7 @@ import java.util.Map;
  * The type Produit.
  */
 public class Produit {
+    private String nom;
     private Categorie categorie;
     private Marque marque;
     private String scoreNutritionnel;
@@ -27,7 +28,8 @@ public class Produit {
      * @param lstAdditif        the list additif
      * @param lstAllergene      the list allergene
      */
-    public Produit(Categorie categorie, Marque marque, String scoreNutritionnel, Map<String, String> lstAttributs, List<Ingredient> lstIngredient, List<Additif> lstAdditif, List<Allergene> lstAllergene) {
+    public Produit(String nom,Categorie categorie, Marque marque, String scoreNutritionnel, Map<String, String> lstAttributs, List<Ingredient> lstIngredient, List<Additif> lstAdditif, List<Allergene> lstAllergene) {
+        this.nom = nom;
         this.categorie = categorie;
         this.marque = marque;
         this.scoreNutritionnel = scoreNutritionnel;
@@ -35,6 +37,14 @@ public class Produit {
         this.lstIngredient = lstIngredient;
         this.lstAdditif = lstAdditif;
         this.lstAllergene = lstAllergene;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     /**
