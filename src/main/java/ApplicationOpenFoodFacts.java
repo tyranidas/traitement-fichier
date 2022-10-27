@@ -3,8 +3,7 @@ import java.util.Scanner;
 
 import components.RecupFichier;
 import services.MenuService;
-
-import javax.swing.*;
+import services.AfficherMeilleurProduitParMarque;
 
 public class ApplicationOpenFoodFacts {
 
@@ -14,10 +13,10 @@ public class ApplicationOpenFoodFacts {
 	 * */
 	public static void main(String[] args) throws IOException {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("******** MENU RECENSEMENT ********");
+		System.out.println("******** MENU FOOD ********");
 		
 		boolean running = true;
-		RecupFichier recupFichier = RecupFichier.getInstance();
+		RecupFichier.getInstance();
 		
 		while (running) {
 			System.out.println("	-----------------	");
@@ -30,17 +29,15 @@ public class ApplicationOpenFoodFacts {
 			System.out.println("6 - Sortir");
 			String userChoice = scanner.nextLine();
 
-			String nom = "";
 
 			switch (userChoice) {
 			case "1":
-				nom = MenuService.afficherMessage("Marque");
-				System.out.println("test::" + nom);
-				MenuService.afficherProduitParMarque(nom);
+				MenuService service1 = new AfficherMeilleurProduitParMarque();
+				service1.traiter(scanner);
 				break;
 
 			case "2":
-				nom = MenuService.afficherMessage("Catégorie");
+				
 				break;
 			case "3":
 				
